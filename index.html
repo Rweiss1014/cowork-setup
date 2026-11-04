@@ -87,11 +87,13 @@
   <section class="step on" id="step-1" data-n="1">
     <h1>Paste the rules for everything</h1>
     <ol class="do">
+      <li>Click <b>Copy</b> below first.</li>
       <li>In the Claude app, click the initials in the <b>lower left</b>, then <b>Settings</b>.</li>
-      <li>Click <b>Cowork</b>. Then click <b>Global instructions</b> (or <b>Edit</b> next to it) to open the box.</li>
-      <li>Click inside the box. Press <b>Ctrl+Home</b> to jump to the very start.</li>
-      <li>Click <b>Copy</b> below. Then press <b>Ctrl+V</b> in the box to paste.</li>
+      <li>Click <b>Cowork</b>, then <b>Global instructions</b> (or <b>Edit</b> next to it). Don't see Cowork? Click <b>Your Claude</b>, then <b>Instructions</b>.</li>
+      <li>Click inside the box once. Press <b>Ctrl+Home</b> to jump to the very start.</li>
+      <li>Press <b>Ctrl+V</b> to paste.</li>
       <li>Click <b>Save</b>.</li>
+      <li>Scroll through the box. You should see the new text on top and the old text below it.</li>
     </ol>
     <p class="tip">The old text stays underneath the new text. Nothing gets deleted.</p>
     <div class="copy"><div class="copy-head"><span>Text A: the rules for everything</span><button type="button">Copy</button></div><pre>About me
@@ -135,21 +137,23 @@ Check before you hand it over
 Before you give me finished work, check it against these instructions, the project's rules and the files. Then tell me in one line what you checked and anything you couldn't check.
 
 Writing
-Follow my grammar and style rules in everything you write. When you edit my writing, apply them quietly. Don't lecture me about them.</pre></div>
-    <p class="small">On a newer Claude app, this box is in Settings, then Your Claude, then Instructions.</p>
+Follow my grammar and style rules in everything you write. When you edit my writing, apply them quietly. Don't lecture me about them.
+
+</pre></div>
     <div class="move"><button class="next" type="button">Done. Next step</button></div>
   </section>
 
   <section class="step" id="step-2" data-n="2">
     <h1>Paste the project note</h1>
     <ol class="do">
-      <li>Open the project.</li>
-      <li>In the panel on the right, find <b>Instructions</b>.</li>
-      <li>Click inside that box. Press <b>Ctrl+Home</b> to jump to the very start.</li>
-      <li>Click <b>Copy</b> below. Then press <b>Ctrl+V</b> in the box to paste.</li>
+      <li>Click <b>Copy</b> below first.</li>
+      <li>Make sure you're in Cowork. If you see <b>Chat</b> and <b>Cowork</b> to switch between, click <b>Cowork</b>.</li>
+      <li>Click <b>Projects</b> in the left panel, then open the project.</li>
+      <li>In the panel on the right, find <b>Instructions</b>. Click inside that box once.</li>
+      <li>Press <b>Ctrl+Home</b> to jump to the very start. Then press <b>Ctrl+V</b> to paste.</li>
       <li>Click <b>Save</b>.</li>
     </ol>
-    <p class="tip">No project yet? Click <b>Projects</b> in the left panel, then <b>+</b>, then <b>Use an existing folder</b>. Pick the folder with the project's files.</p>
+    <p class="tip">No project yet? Click <b>Projects</b>, then <b>+</b>, then <b>Use an existing folder</b>. Pick the folder with the project's files.</p>
     <div class="copy"><div class="copy-head"><span>Text B: the project note</span><button type="button">Copy</button></div><pre>This project's folder is home base for all our work. A new task may not remember everything, so these two files are your dependable memory:
 - CLAUDE.md is the start-here file, with this project's facts and rules.
 - HANDOFF.md says where we are now, what's next, and what we did before.
@@ -176,7 +180,9 @@ Rules and decisions
 Finishing
 Each time we finish a piece of work, update HANDOFF.md before you tell me it's done. Write where we are now and what's next. Add a short dated note of what we did and which files you made or changed.
 
-If CLAUDE.md isn't in the folder yet, tell me, and ask me to send my set-up message.</pre></div>
+If CLAUDE.md isn't in the folder yet, tell me, and ask me to send my set-up message.
+
+</pre></div>
     <div class="move"><button class="back" type="button">Back</button><button class="next" type="button">Done. Next step</button></div>
   </section>
 
@@ -186,12 +192,13 @@ If CLAUDE.md isn't in the folder yet, tell me, and ask me to send my set-up mess
       <li>In the project, start a <b>new task</b>.</li>
       <li>Click <b>Copy</b> below. Paste it into the message box and send it.</li>
       <li>Cowork reads the folder and makes two files: a start-here file and a handoff.</li>
-      <li>It asks a few questions, one at a time. Answer them.</li>
+      <li>It asks a few questions, one at a time. Answer them. Don't know one? Type: I don't know yet.</li>
+      <li>You're done when it shows you the start-here file, CLAUDE.md.</li>
     </ol>
     <div class="copy"><div class="copy-head"><span>Text C: the set-up message</span><button type="button">Copy</button></div><pre>Please set up this project so you never lose track of it, even in a brand-new task.
 
 1. Read every file in the project folder, including subfolders, all the way through. If there's too much to read fully, tell me which files you only skimmed.
-2. Make a file named CLAUDE.md in the project folder, using the CLAUDE.md outline below. Fill in what you find in the files. Wherever you don't know something, write [NEED: what's missing] instead of guessing.
+2. Make a file named CLAUDE.md in the project folder, using the CLAUDE.md outline below. Fill in what you find in the files. Wherever you don't know something, write [NEED: what's missing] instead of guessing. If CLAUDE.md or HANDOFF.md is already in the folder, keep everything in it and add to it.
 3. Ask me about each [NEED], one question at a time, and add my answers to CLAUDE.md.
 4. Make a file named HANDOFF.md in the project folder, using the HANDOFF.md outline below.
 5. When you're done, show me CLAUDE.md, and tell me where you saved both files.
@@ -244,7 +251,7 @@ Newest first. A dated line or two for each piece of work: what we did, and which
 
   <section class="step" id="step-4" data-n="4">
     <h1>Add the project's extra rules</h1>
-    <p>Stay in the same task. For the SQL deck, send both messages below.</p>
+    <p>Stay in the same task. Send the ones that fit this project. If neither fits, click Next.</p>
     <h2>First: the course rules</h2>
     <p class="small">For any course, training or other content project.</p>
     <ol class="do">
@@ -356,7 +363,8 @@ For each slide I build, give me a card with:
     <details>
       <summary>Once a month: tidy up the rules</summary>
       <div class="body">
-        <p>Start a new task in any project and send this. Cowork makes one clean list of all the rules. Then paste its clean block into the Global instructions box, in place of what's there, and save.</p>
+        <p>Start a new task in any project and send this. Cowork saves a list of all the rules in MY-RULES.md and shows you one clean block.</p>
+        <p>Check that MY-RULES.md is in the folder. Copy the clean block. Then open the Global instructions box, press <b>Ctrl+A</b>, then <b>Ctrl+V</b>, and save.</p>
         <div class="copy"><div class="copy-head"><span>Text F: tidy up my rules</span><button type="button">Copy</button></div><pre>Please tidy up all the rules I've given you, so none get lost and none repeat.
 
 1. Collect every rule, preference and correction you can find. Look hardest for my grammar and style rules. Look in:
