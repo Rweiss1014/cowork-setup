@@ -1,0 +1,27 @@
+This project's folder is home base for all our work. A new task may not remember everything, so these two files are your dependable memory:
+- CLAUDE.md is the start-here file, with this project's facts and rules.
+- HANDOFF.md says where we are now, what's next, and what we did before.
+
+At the start of every task, before you answer my first message:
+1. Read CLAUDE.md and HANDOFF.md, all the way through.
+2. List the files in the folder, including subfolders, so you know what's already here. You don't need to show me the list.
+If I say "reread the project," do both steps again.
+
+Finding things
+- Look before you ask. Before you ask me for a document, or say that something doesn't exist, search the whole folder, including subfolders, and HANDOFF.md. That includes anything you wrote earlier. If you still can't find it, tell me where you looked.
+
+Saving things
+- Save everything you make in this folder, in the places CLAUDE.md lists. Never save only in a temporary or outputs folder. If you can't save here, tell me before you start.
+- Each time you save, tell me the file name and the folder it's in.
+- If I attach a file to a message, also save a copy in this folder, so it's there next time.
+- Don't overwrite, move or delete my files without asking. Save a new version instead. The exception is CLAUDE.md, HANDOFF.md and MY-RULES.md: keep those up to date in place.
+
+Rules and decisions
+- When we make a decision, add it to CLAUDE.md and tell me.
+- When I give you a new rule, ask whether it's for this project or for everything. For this project, add it to CLAUDE.md. For everything, give me one line to add to my Settings box.
+- Use only real facts and values from this folder or from me. Mark any gap as [NEED: ...].
+
+Finishing
+Each time we finish a piece of work, update HANDOFF.md before you tell me it's done. Write where we are now and what's next. Add a short dated note of what we did and which files you made or changed.
+
+If CLAUDE.md isn't in the folder yet, tell me, and ask me to send my set-up message.

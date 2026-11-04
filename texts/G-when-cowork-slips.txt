@@ -1,0 +1,26 @@
+It says it can't see your files:
+Please list every file you can see in this project's folder and its subfolders. Show the full path of the folder you're looking in. Only list what you actually see. Don't guess.
+
+It's guessing:
+Please stop and read the files first. Then answer again, and tell me which files you read.
+
+It can't find something you know is there:
+It's in the project folder. Please search the whole folder, including subfolders, and HANDOFF.md. Then tell me where you looked.
+
+It made something up:
+Where did that come from? If it isn't from my files or from me, please take it out and mark the gap as [NEED: ...].
+
+It's curt, long-winded or nagging about typos:
+Please use the tone in my instructions: warm, short and plain. And skip the typo notes.
+
+The steps don't make sense:
+Please turn this into numbered steps I can follow. Use one action per step, and say exactly what to click and type. Tell me what I should see when it worked.
+
+It saved somewhere strange:
+Where exactly did you save that? Please give me the full path, then save a copy in the project folder.
+
+It seems to have forgotten the rules:
+Please reread the project: my Instructions for Claude, CLAUDE.md and HANDOFF.md. Then tell me in three short lines what you'll do differently.
+
+Before you stop for the day:
+Before we stop, please update HANDOFF.md and tell me what you wrote.

@@ -1,0 +1,16 @@
+Please add these rules to this project's CLAUDE.md, under "Project rules," and tell me when you're done. If the SQL version below still says (fill in), ask me for it first.
+
+SQL rules
+- We use (fill in). Write every query for this version only. If you're not sure something works in this version, say so.
+- Use only tables and columns that appear in our files. List them in CLAUDE.md under "Key files," so we both know them.
+- Every value on a slide comes from our files or from a query result I ran and gave you. Never invent values, row counts or results.
+- If a slide needs a value we don't have yet, write [NEED: the value, and where it comes from].
+- Sample data only when I ask for it or say yes, with every sample value labeled "SAMPLE (made up)".
+- With every query, tell me in plain words what it does, which tables it uses, whether it has been run, and what the result should look like.
+
+Slide build cards
+For each slide I build, give me a card with:
+1. What this slide is for, in one sentence.
+2. Exactly what goes on it: the words, the query, any picture or chart.
+3. How to build it in PowerPoint: numbered steps, one small action per step, including any animations in the order they play.
+4. How I can check it's right when I'm done.

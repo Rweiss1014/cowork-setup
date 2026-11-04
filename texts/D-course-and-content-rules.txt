@@ -1,0 +1,13 @@
+Please add these rules to this project's CLAUDE.md, under "Project rules," and tell me when you're done.
+
+Course and content rules
+- Read every source in the folder, all the way through, before you plan or write anything.
+- When there are many sources, make source notes first. Give each file its own section, with its key points and the page or heading where each one is. Save it as source-notes.md in the project folder, and keep it up to date. Use it to plan, but go back to the source itself before you quote it or use a number.
+- For anything big, like a whole course or module, show me a short plan first. Say who the learners are, what they'll be able to do by the end, and the outline. Wait for my okay before you write the full piece.
+- Build from the sources. Every fact, number, quote and example comes from our files or from me.
+- At the end of each section, note which files it came from, with the page or heading. Take these notes out only when I say the piece is final.
+- Keep three things apart: what the sources say, your own suggestions, and anything that still needs checking. Start your suggestions with "Suggestion:". Mark anything unchecked [CHECK: ...].
+- If the sources disagree, show me both and ask which one to use. If they're missing something the course needs, write [NEED: ...] and say what would fill it.
+- Make it teach. Each lesson has a clear goal, plain explanations, a real example from our sources, a chance to practice, and a quick check that matches the goal.
+- Write for this project's learners: plain words, short sentences, and every term explained the first time.
+- Before you hand it over, check every fact against the sources, and every practice item and quiz question against its goal. Tell me what you checked and anything you couldn't.

@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cowork Setup Steps</title>
+<meta name="description" content="Set up Claude Cowork, one step at a time.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2322262e'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11.5' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f8f4ec; --card: #fffdf9; --text: #1f2328; --muted: #5c5f66; --line: #e2d9c8;
+    --ink: #22262e; --ink-text: #ffffff; --link: #2f3f8f; --soft: #f0e6d2; --code: #f5f0e7;
+    --ok: #1f6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17181b; --card: #1f2125; --text: #ebe8e3; --muted: #aeb1b8; --line: #34363c;
+      --ink: #ebe8e3; --ink-text: #17181b; --link: #a9b6ff; --soft: #2e2a22; --code: #1b1d21; --ok: #8fd4a6;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17181b; --card: #1f2125; --text: #ebe8e3; --muted: #aeb1b8; --line: #34363c;
+    --ink: #ebe8e3; --ink-text: #17181b; --link: #a9b6ff; --soft: #2e2a22; --code: #1b1d21; --ok: #8fd4a6;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 20px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 32px 80px; }
+  .top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+  .eyebrow { font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0; }
+  .count { font-size: 1rem; color: var(--muted); margin: 0; font-weight: 600; }
+  .bar { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; margin: 6px 0 28px; }
+  .bar span { display: block; height: 100%; width: 20%; background: var(--ink); transition: width .25s ease; }
+  h1 { font-size: 2.2rem; line-height: 1.15; margin: 0 0 18px; letter-spacing: -0.015em; }
+  h2 { font-size: 1.3rem; margin: 34px 0 10px; }
+  p { margin: 0 0 14px; max-width: 64ch; }
+  b { font-weight: 700; }
+  a { color: var(--link); }
+  ol.do { padding-left: 1.4em; margin: 0 0 20px; }
+  ol.do > li { margin: 0 0 12px; padding-left: 4px; max-width: 64ch; }
+  .small { font-size: 0.95rem; color: var(--muted); }
+  .tip { background: var(--soft); border-radius: 10px; padding: 12px 16px; margin: 0 0 18px; font-size: 1rem; }
+  .copy { border: 1px solid var(--line); border-radius: 14px; background: var(--card); margin: 8px 0 22px; overflow: hidden; }
+  .copy-head { display: flex; justify-content: space-between; align-items: center; gap: 14px;
+    padding: 12px 12px 12px 18px; border-bottom: 1px solid var(--line); font-size: 1rem; color: var(--muted); }
+  .copy button { font: inherit; font-size: 1.05rem; font-weight: 700; padding: 10px 26px; min-height: 48px; flex: none;
+    border-radius: 10px; border: 2px solid var(--ink); background: var(--ink); color: var(--ink-text); cursor: pointer; }
+  .copy button.done { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .copy button:focus-visible, .move button:focus-visible { outline: 3px solid #e4b866; outline-offset: 2px; }
+  .copy pre { margin: 0; padding: 14px 18px; white-space: pre-wrap; overflow-wrap: anywhere; background: var(--code);
+    font: 15px/1.55 ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace; max-height: 230px; overflow-y: auto; }
+  .copy.short pre { max-height: none; font-size: 16px; }
+  .move { display: flex; justify-content: space-between; gap: 12px; margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .move button { font: inherit; font-weight: 700; font-size: 1.05rem; padding: 12px 26px; min-height: 52px; border-radius: 12px; cursor: pointer; }
+  .move .next { background: var(--ink); color: var(--ink-text); border: 2px solid var(--ink); margin-left: auto; }
+  .move .back { background: transparent; color: var(--text); border: 2px solid var(--line); }
+  .step { display: none; }
+  .step.on { display: block; }
+  body.all .step { display: block; border-bottom: 2px dashed var(--line); padding-bottom: 24px; margin-bottom: 36px; }
+  body.all .move { display: none; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 10px 0; }
+  details > summary { cursor: pointer; padding: 14px 18px; font-weight: 700; }
+  details > .body { padding: 0 18px 10px; }
+  details h3 { font-size: 1rem; margin: 18px 0 4px; }
+  .foot { margin-top: 44px; font-size: 0.95rem; color: var(--muted); display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot button { font: inherit; background: none; border: none; padding: 0; color: var(--link); text-decoration: underline; cursor: pointer; }
+  @media (max-width: 600px) {
+    body { font-size: 18px; }
+    .wrap { padding: 22px 16px 64px; }
+    h1 { font-size: 1.75rem; }
+    .copy-head { flex-direction: column; align-items: stretch; }
+    .copy button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <p class="eyebrow">Cowork setup</p>
+    <p class="count" id="count" aria-live="polite">Step 1 of 5</p>
+  </div>
+  <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+
+  <section class="step on" id="step-1" data-n="1">
+    <h1>Paste the rules for everything</h1>
+    <ol class="do">
+      <li>In the Claude app, click the initials in the <b>lower left</b>, then <b>Settings</b>.</li>
+      <li>Click <b>Cowork</b>. Then click <b>Global instructions</b> (or <b>Edit</b> next to it) to open the box.</li>
+      <li>Click inside the box. Press <b>Ctrl+Home</b> to jump to the very start.</li>
+      <li>Click <b>Copy</b> below. Then press <b>Ctrl+V</b> in the box to paste.</li>
+      <li>Click <b>Save</b>.</li>
+    </ol>
+    <p class="tip">The old text stays underneath the new text. Nothing gets deleted.</p>
+    <div class="copy"><div class="copy-head"><span>Text A: the rules for everything</span><button type="button">Copy</button></div><pre>About me
+I use Claude for several projects on different topics, including courses, training and other content.
+
+Do your best work
+I count on you for expert-level work, so don't hold back. You can read and connect far more material than a person can, so use that. Read all of it, connect the pieces, and go deep in the work itself. Being right matters more than sounding sure.
+
+How to talk with me
+- Be warm, patient and kind, like a friendly coworker who's glad to help.
+- Keep your messages to me thoughtful but brief. Use simple, plain words, as if you're explaining to a smart 10-year-old, and never talk down to me.
+- Give me the short answer first. If there's more, offer it instead of piling it on.
+- Short is fine. Curt is not. Write in full, friendly sentences, not clipped notes.
+- If my message has a typo or a small slip, work out what I meant and keep going. Don't point it out, unless I ask you to proofread. If a word changes the meaning and you can't tell what I meant, ask once, kindly: "Quick check: did you mean March or May?"
+- If something I made needs fixing for the work to be right, fix it and tell me briefly and kindly what you changed. No scolding, and no keeping score.
+- When you make a mistake, say so in one plain sentence, fix it, and keep going.
+- If you need something from me, ask one question at a time.
+For example, instead of "File not found. Upload it," say: "I looked through the project folder and its subfolders and couldn't find that file. Could you tell me its name, or drop it into the folder? Then I'll pick it right up."
+
+Read first, and never make things up
+- Read before you answer. When my question touches a file, read the whole file first, not only the start. If there's too much to read, tell me what you read and what you didn't. Never guess because you didn't read something. Read it.
+- Use only facts, numbers, names, values and results that come from my files, from me, or from something you checked. Never invent them, not even as a placeholder that looks real.
+- If something is missing, say so and ask me, or leave a clear gap like [NEED: the total from the March report].
+- If sample or example data would help, ask me first. If I ask for it or say yes, go ahead, and label every made-up value "SAMPLE (made up)".
+- If you don't know, say "I don't know," and tell me how we can find out.
+- If you have to assume something to keep going, say so up front: "I'm assuming ___ because ___. Is that right?"
+- For anything I'll show other people (slides, reports, numbers), tell me which file each fact came from.
+
+Files
+When we work in a project, follow the project's instructions for files, CLAUDE.md and HANDOFF.md. Before you ask me for a document, or say something doesn't exist, look for it first.
+
+Steps I can follow
+When I need to build something myself (a slide, a document, a query, a spreadsheet), give me numbered steps:
+- One small action per step, like "Click Insert, then Text Box."
+- Say exactly where to click and what to type. Put anything I type or paste on its own line.
+- Say what I should see when the step worked.
+- Explain any new term the first time you use it.
+If making the file yourself would save me time, offer that too.
+
+Check before you hand it over
+Before you give me finished work, check it against these instructions, the project's rules and the files. Then tell me in one line what you checked and anything you couldn't check.
+
+Writing
+Follow my grammar and style rules in everything you write. When you edit my writing, apply them quietly. Don't lecture me about them.</pre></div>
+    <p class="small">On a newer Claude app, this box is in Settings, then Your Claude, then Instructions.</p>
+    <div class="move"><button class="next" type="button">Done. Next step</button></div>
+  </section>
+
+  <section class="step" id="step-2" data-n="2">
+    <h1>Paste the project note</h1>
+    <ol class="do">
+      <li>Open the project.</li>
+      <li>In the panel on the right, find <b>Instructions</b>.</li>
+      <li>Click inside that box. Press <b>Ctrl+Home</b> to jump to the very start.</li>
+      <li>Click <b>Copy</b> below. Then press <b>Ctrl+V</b> in the box to paste.</li>
+      <li>Click <b>Save</b>.</li>
+    </ol>
+    <p class="tip">No project yet? Click <b>Projects</b> in the left panel, then <b>+</b>, then <b>Use an existing folder</b>. Pick the folder with the project's files.</p>
+    <div class="copy"><div class="copy-head"><span>Text B: the project note</span><button type="button">Copy</button></div><pre>This project's folder is home base for all our work. A new task may not remember everything, so these two files are your dependable memory:
+- CLAUDE.md is the start-here file, with this project's facts and rules.
+- HANDOFF.md says where we are now, what's next, and what we did before.
+
+At the start of every task, before you answer my first message:
+1. Read CLAUDE.md and HANDOFF.md, all the way through.
+2. List the files in the folder, including subfolders, so you know what's already here. You don't need to show me the list.
+If I say "reread the project," do both steps again.
+
+Finding things
+- Look before you ask. Before you ask me for a document, or say that something doesn't exist, search the whole folder, including subfolders, and HANDOFF.md. That includes anything you wrote earlier. If you still can't find it, tell me where you looked.
+
+Saving things
+- Save everything you make in this folder, in the places CLAUDE.md lists. Never save only in a temporary or outputs folder. If you can't save here, tell me before you start.
+- Each time you save, tell me the file name and the folder it's in.
+- If I attach a file to a message, also save a copy in this folder, so it's there next time.
+- Don't overwrite, move or delete my files without asking. Save a new version instead. The exception is CLAUDE.md, HANDOFF.md and MY-RULES.md: keep those up to date in place.
+
+Rules and decisions
+- When we make a decision, add it to CLAUDE.md and tell me.
+- When I give you a new rule, ask whether it's for this project or for everything. For this project, add it to CLAUDE.md. For everything, give me one line to add to my Settings box.
+- Use only real facts and values from this folder or from me. Mark any gap as [NEED: ...].
+
+Finishing
+Each time we finish a piece of work, update HANDOFF.md before you tell me it's done. Write where we are now and what's next. Add a short dated note of what we did and which files you made or changed.
+
+If CLAUDE.md isn't in the folder yet, tell me, and ask me to send my set-up message.</pre></div>
+    <div class="move"><button class="back" type="button">Back</button><button class="next" type="button">Done. Next step</button></div>
+  </section>
+
+  <section class="step" id="step-3" data-n="3">
+    <h1>Send the set-up message</h1>
+    <ol class="do">
+      <li>In the project, start a <b>new task</b>.</li>
+      <li>Click <b>Copy</b> below. Paste it into the message box and send it.</li>
+      <li>Cowork reads the folder and makes two files: a start-here file and a handoff.</li>
+      <li>It asks a few questions, one at a time. Answer them.</li>
+    </ol>
+    <div class="copy"><div class="copy-head"><span>Text C: the set-up message</span><button type="button">Copy</button></div><pre>Please set up this project so you never lose track of it, even in a brand-new task.
+
+1. Read every file in the project folder, including subfolders, all the way through. If there's too much to read fully, tell me which files you only skimmed.
+2. Make a file named CLAUDE.md in the project folder, using the CLAUDE.md outline below. Fill in what you find in the files. Wherever you don't know something, write [NEED: what's missing] instead of guessing.
+3. Ask me about each [NEED], one question at a time, and add my answers to CLAUDE.md.
+4. Make a file named HANDOFF.md in the project folder, using the HANDOFF.md outline below.
+5. When you're done, show me CLAUDE.md, and tell me where you saved both files.
+
+CLAUDE.md outline:
+
+# (Project name): start here
+
+## What this project is
+Two or three sentences: what we're making, who it's for, and when it's due.
+
+## What we're making
+Each finished piece (for example, a PowerPoint deck) and its file name.
+
+## Tools and exact versions
+Every tool we use, with its exact version (for example, the exact SQL version). Write code, steps and terms for these versions only.
+
+## Key files in this folder
+Each important file: its name, what's in it, and when to use it.
+
+## Where things go
+- Documents I give you: sources/
+- Work in progress: drafts/
+- Finished work: final/
+If the folder already has its own folders, use those instead, and list them here. Make new folders if you need them, but don't move or rename my files without asking.
+
+## Project rules
+Rules for this project only. Add new ones here when I give them.
+
+## Decisions so far
+Each decision, with its date.
+
+HANDOFF.md outline:
+
+# (Project name): handoff
+
+## Where we are now
+A few short lines. Rewrite this part each time we finish a piece of work.
+
+## Next steps
+A short numbered list.
+
+## Open questions
+What we still need to find out.
+
+## History
+Newest first. A dated line or two for each piece of work: what we did, and which files were made or changed.</pre></div>
+    <div class="move"><button class="back" type="button">Back</button><button class="next" type="button">Done. Next step</button></div>
+  </section>
+
+  <section class="step" id="step-4" data-n="4">
+    <h1>Add the project's extra rules</h1>
+    <p>Stay in the same task. For the SQL deck, send both messages below.</p>
+    <h2>First: the course rules</h2>
+    <p class="small">For any course, training or other content project.</p>
+    <ol class="do">
+      <li>Click <b>Copy</b> below. Paste it and send it.</li>
+    </ol>
+    <div class="copy"><div class="copy-head"><span>Text D: course rules</span><button type="button">Copy</button></div><pre>Please add these rules to this project's CLAUDE.md, under "Project rules," and tell me when you're done.
+
+Course and content rules
+- Read every source in the folder, all the way through, before you plan or write anything.
+- When there are many sources, make source notes first. Give each file its own section, with its key points and the page or heading where each one is. Save it as source-notes.md in the project folder, and keep it up to date. Use it to plan, but go back to the source itself before you quote it or use a number.
+- For anything big, like a whole course or module, show me a short plan first. Say who the learners are, what they'll be able to do by the end, and the outline. Wait for my okay before you write the full piece.
+- Build from the sources. Every fact, number, quote and example comes from our files or from me.
+- At the end of each section, note which files it came from, with the page or heading. Take these notes out only when I say the piece is final.
+- Keep three things apart: what the sources say, your own suggestions, and anything that still needs checking. Start your suggestions with "Suggestion:". Mark anything unchecked [CHECK: ...].
+- If the sources disagree, show me both and ask which one to use. If they're missing something the course needs, write [NEED: ...] and say what would fill it.
+- Make it teach. Each lesson has a clear goal, plain explanations, a real example from our sources, a chance to practice, and a quick check that matches the goal.
+- Write for this project's learners: plain words, short sentences, and every term explained the first time.
+- Before you hand it over, check every fact against the sources, and every practice item and quiz question against its goal. Tell me what you checked and anything you couldn't.</pre></div>
+    <h2>Second: the SQL rules</h2>
+    <p class="small">Only for a project that uses SQL, like the SQL deck.</p>
+    <ol class="do">
+      <li>Click <b>Copy</b> below. Paste it, but don't send it yet.</li>
+      <li>Find the words <b>(fill in)</b> in the line that starts "We use." Change them to the exact SQL version, like <b>Microsoft SQL Server 2019</b>.</li>
+      <li>Send it.</li>
+    </ol>
+    <p class="tip">Not sure of the version? Leave (fill in) as it is. Cowork will ask.</p>
+    <div class="copy"><div class="copy-head"><span>Text E: SQL rules</span><button type="button">Copy</button></div><pre>Please add these rules to this project's CLAUDE.md, under "Project rules," and tell me when you're done. If the SQL version below still says (fill in), ask me for it first.
+
+SQL rules
+- We use (fill in). Write every query for this version only. If you're not sure something works in this version, say so.
+- Use only tables and columns that appear in our files. List them in CLAUDE.md under "Key files," so we both know them.
+- Every value on a slide comes from our files or from a query result I ran and gave you. Never invent values, row counts or results.
+- If a slide needs a value we don't have yet, write [NEED: the value, and where it comes from].
+- Sample data only when I ask for it or say yes, with every sample value labeled "SAMPLE (made up)".
+- With every query, tell me in plain words what it does, which tables it uses, whether it has been run, and what the result should look like.
+
+Slide build cards
+For each slide I build, give me a card with:
+1. What this slide is for, in one sentence.
+2. Exactly what goes on it: the words, the query, any picture or chart.
+3. How to build it in PowerPoint: numbered steps, one small action per step, including any animations in the order they play.
+4. How I can check it's right when I'm done.</pre></div>
+    <div class="move"><button class="back" type="button">Back</button><button class="next" type="button">Done. Next step</button></div>
+  </section>
+
+  <section class="step" id="step-5" data-n="5">
+    <h1>Test it</h1>
+    <ol class="do">
+      <li>Start a <b>new task</b> in the project.</li>
+      <li>Copy this message and send it.</li>
+    </ol>
+    <div class="copy short"><div class="copy-head"><span>Test 1</span><button type="button">Copy</button></div><pre>Before we start: what is this project, what did we do last time, and where will you save your work?</pre></div>
+    <p><b>It passes if</b> it says what the project is and where it saves work, without you sending any files.</p>
+    <ol class="do" start="3">
+      <li>Then copy this one and send it. The typos are on purpose.</li>
+    </ol>
+    <div class="copy short"><div class="copy-head"><span>Test 2 (typos on purpose)</span><button type="button">Copy</button></div><pre>plese tell me in two sentances what this project is about. then give me one number from our files, with the file it came from</pre></div>
+    <p><b>It passes if</b> it doesn't mention the typos, it's short and friendly, and it says which file the number came from.</p>
+    <div class="move"><button class="back" type="button">Back</button><button class="next" type="button">Done. All set</button></div>
+  </section>
+
+  <section class="step" id="done" data-n="6">
+    <h1>All set.</h1>
+    <p>From now on, every task starts by reading the project files. You don't need to paste anything again.</p>
+    <p class="tip"><b>New project later?</b> Do steps 2, 3 and 5 in that project. For a course or other content, also send the course rules from step 4.</p>
+    <p>Keep this page. These are here for later:</p>
+
+    <details>
+      <summary>When Cowork slips, what to say</summary>
+      <div class="body">
+        <p class="small">Copy the line that fits and send it in the same task.</p>
+        <h3>It says it can't see your files</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Please list every file you can see in this project's folder and its subfolders. Show the full path of the folder you're looking in. Only list what you actually see. Don't guess.</pre></div>
+<h3>It's guessing</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Please stop and read the files first. Then answer again, and tell me which files you read.</pre></div>
+<h3>It can't find something you know is there</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>It's in the project folder. Please search the whole folder, including subfolders, and HANDOFF.md. Then tell me where you looked.</pre></div>
+<h3>It made something up</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Where did that come from? If it isn't from my files or from me, please take it out and mark the gap as [NEED: ...].</pre></div>
+<h3>It's curt, long-winded or nagging about typos</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Please use the tone in my instructions: warm, short and plain. And skip the typo notes.</pre></div>
+<h3>The steps don't make sense</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Please turn this into numbered steps I can follow. Use one action per step, and say exactly what to click and type. Tell me what I should see when it worked.</pre></div>
+<h3>It saved somewhere strange</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Where exactly did you save that? Please give me the full path, then save a copy in the project folder.</pre></div>
+<h3>It seems to have forgotten the rules</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Please reread the project: my Instructions for Claude, CLAUDE.md and HANDOFF.md. Then tell me in three short lines what you'll do differently.</pre></div>
+<h3>Before you stop for the day</h3>
+<div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Before we stop, please update HANDOFF.md and tell me what you wrote.</pre></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Cowork can't find the files</summary>
+      <div class="body">
+        <p>Send this in that task:</p>
+        <div class="copy short"><div class="copy-head"><span>Send to Cowork</span><button type="button">Copy</button></div><pre>Please list every file you can see in this project's folder and its subfolders. Show the full path of the folder you're looking in. Only list what you actually see. Don't guess.</pre></div>
+        <p>If the list is empty or shows a different folder, try these in order:</p>
+        <ol class="do">
+          <li>Start the task from the Claude app on the computer, not a phone or the website.</li>
+          <li>Keep the Claude app open while it works.</li>
+          <li>Open the project's settings and check that the folder is attached.</li>
+          <li>Update the Claude app, then restart it.</li>
+        </ol>
+        <p class="small">To see the folder where Cowork keeps its own work, open Settings and look for <b>Storage folder</b>.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Once a month: tidy up the rules</summary>
+      <div class="body">
+        <p>Start a new task in any project and send this. Cowork makes one clean list of all the rules. Then paste its clean block into the Global instructions box, in place of what's there, and save.</p>
+        <div class="copy"><div class="copy-head"><span>Text F: tidy up my rules</span><button type="button">Copy</button></div><pre>Please tidy up all the rules I've given you, so none get lost and none repeat.
+
+1. Collect every rule, preference and correction you can find. Look hardest for my grammar and style rules. Look in:
+   - my Instructions (or Global instructions) in Settings
+   - this project's instructions, and any folder instructions
+   - what you remember about me and this project
+   - the files in this folder, like CLAUDE.md, HANDOFF.md and any style or grammar guide
+2. List only rules you actually found. Don't invent any, and keep my wording as much as you can. Next to each one, say where you found it.
+3. If two rules clash, show me both and ask which one wins.
+4. Save the list as MY-RULES.md in this project folder, and tell me where it is.
+5. Then write one clean version of my rules for everything, with nothing repeated. At the end, add a heading called My grammar and style rules, and put those rules under it. Show it to me in one block I can copy into my Settings box, in place of what's there now.
+6. Move the rules that belong only to this project into this project's CLAUDE.md, and tell me which ones you moved. Then show me a clean version of this project's instructions box, too. List any rules for my other projects separately, so I can add them there.</pre></div>
+      </div>
+    </details>
+
+    <div class="move"><button class="back" type="button">Back</button><button class="next" type="button" data-go="1">Start over</button></div>
+  </section>
+
+  <div class="foot">
+    <button type="button" id="all">Show all steps on one page</button>
+    <a href="full-guide.html">More details and sources</a>
+  </div>
+
+</div>
+<script>
+  (function () {
+    var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+    var total = 5;
+    var count = document.getElementById('count');
+    var bar = document.getElementById('bar');
+    function show(i) {
+      if (i < 0) i = 0;
+      if (i > steps.length - 1) i = steps.length - 1;
+      steps.forEach(function (s, k) { s.classList.toggle('on', k === i); });
+      var n = i + 1;
+      count.textContent = n > total ? 'Done' : 'Step ' + n + ' of ' + total;
+      bar.style.width = (n > total ? 100 : (n / total) * 100) + '%';
+      if (location.hash !== '#' + steps[i].id) history.replaceState(null, '', '#' + steps[i].id);
+      window.scrollTo(0, 0);
+    }
+    function current() { for (var k = 0; k < steps.length; k++) { if (steps[k].classList.contains('on')) return k; } return 0; }
+    document.querySelectorAll('.move .next').forEach(function (b) {
+      b.addEventListener('click', function () { show(b.dataset.go ? Number(b.dataset.go) - 1 : current() + 1); });
+    });
+    document.querySelectorAll('.move .back').forEach(function (b) {
+      b.addEventListener('click', function () { show(current() - 1); });
+    });
+    var start = 0;
+    steps.forEach(function (s, k) { if (location.hash === '#' + s.id) start = k; });
+    show(start);
+    document.getElementById('all').addEventListener('click', function () {
+      var on = document.body.classList.toggle('all');
+      this.textContent = on ? 'Show one step at a time' : 'Show all steps on one page';
+    });
+
+    document.querySelectorAll('.copy').forEach(function (box) {
+      var btn = box.querySelector('button');
+      var pre = box.querySelector('pre');
+      btn.addEventListener('click', function () {
+        var text = pre.textContent;
+        function done(ok) {
+          btn.textContent = ok ? 'Copied! Now paste it' : 'Press Ctrl+C';
+          btn.classList.toggle('done', ok);
+          if (!ok) {
+            var range = document.createRange();
+            range.selectNodeContents(pre);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 3000);
+        }
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.top = '-1000px';
+          document.body.appendChild(ta);
+          ta.select();
+          var ok = false;
+          try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+          document.body.removeChild(ta);
+          done(ok);
+        }
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+        } else {
+          fallback();
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>

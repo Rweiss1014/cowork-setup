@@ -1,0 +1,12 @@
+Please tidy up all the rules I've given you, so none get lost and none repeat.
+
+1. Collect every rule, preference and correction you can find. Look hardest for my grammar and style rules. Look in:
+   - my Instructions (or Global instructions) in Settings
+   - this project's instructions, and any folder instructions
+   - what you remember about me and this project
+   - the files in this folder, like CLAUDE.md, HANDOFF.md and any style or grammar guide
+2. List only rules you actually found. Don't invent any, and keep my wording as much as you can. Next to each one, say where you found it.
+3. If two rules clash, show me both and ask which one wins.
+4. Save the list as MY-RULES.md in this project folder, and tell me where it is.
+5. Then write one clean version of my rules for everything, with nothing repeated. At the end, add a heading called My grammar and style rules, and put those rules under it. Show it to me in one block I can copy into my Settings box, in place of what's there now.
+6. Move the rules that belong only to this project into this project's CLAUDE.md, and tell me which ones you moved. Then show me a clean version of this project's instructions box, too. List any rules for my other projects separately, so I can add them there.
